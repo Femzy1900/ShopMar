@@ -1,72 +1,90 @@
-import {createBrowserRouter} from "react-router-dom";
-import App from "../App"
-import Home from "../pages/home/Home";
-import Login from "../pages/login/Login";
-import Signup from "../pages/signup/Signup";
-import AdminPanel from "../pages/adminpanel/Adminpanel";
-import AllUser from "../pages/Alluser/AllUser";
-import AllProducts from "../pages/allproducts/AllProducts";
-import ProductDetails from "../pages/productdetail/ProductDetail";
-import Cart from "../pages/cart/Cart";
-import About from "../pages/about/About";
-import ProductFilter from "../pages/filter/ProductFilter";
-import SearchProduct from "../pages/searchproduct/SearchProduct";
+// import {createBrowserRouter} from "react-router-dom";
+// import App from "../App";
+// import Home from "../pages/Home";
+// import Login from "../pages/Login";
+// import ForgotPassword from "../pages/ForgotPassword";
+// import Signup from "../pages/Signup";
+// import AdminPanel from "../pages/Adminpanel";
+// import AllUser from "../pages/AllUser";
+// import AllProducts from "../pages/AllProducts";
+// import CategoryProduct from "../pages/CategoryProduct";
+// import ProductDetails from "../pages/ProductDetail";
+// import Cart from "../pages/Cart";
+// import SearchProduct from "../pages/SearchProduct";
+// import Success from "../pages/Success";
+// import Cancel from "../pages/Cancel";
+// import OrderPage from "../pages/OrderPage";
 
+// const router = createBrowserRouter([
+//     {
+//         path: "/",
+//         element: <App />,
+//         children: [
+//             {
+//                 path: "",
+//                 element: <Home/>
+//             },
+//             {
+//                 path: "login",
+//                 element: <Login/>
+//             },
+//             {
+//                 path: "forgot-password",
+//                 element: <ForgotPassword/>
+//             },
+//             {
+//                 path: "sign-up",
+//                 element: <Signup/>
+//             },
+//             // {
+//             //     path: "product-category/:categoryName",//??????????????????????????????????????
+//             //     element: <CategoryProduct/>
+//             // },
+//             {
+//                 path: "product-category/",
+//                 element: <CategoryProduct/>
+//             },
+//             {
+//                 path: "product/:id",
+//                 element: <ProductDetails/>
+//             },
+//             {
+//                 path: "cart",
+//                 element: <Cart/>
+//             },
+//             {
+//                 path: "success",
+//                 element: <Success/>
+//             },
+//             {
+//                 path: "cancel",
+//                 element: <Cancel/>
+//             },
+//             {
+//                 path: "search",
+//                 element: <SearchProduct/>
+//             },
+//             {
+//                 path: "order",
+//                 element: <OrderPage/>
+//             },
+//             {
+//                 path: "admin-panel",
+//                 element: <AdminPanel/>,
+//                 children: [
+//                     {
+//                         path: "all-users",
+//                         element: <AllUser/>
+//                     },
+//                     {
+//                         path: "all-products",
+//                         element: <AllProducts/>
+//                     }
+//                 ]
+//             }
+//         ]
 
-const router = createBrowserRouter([
-    {
-        path: "",
-        element: <App />,
-        children: [
-            {
-                path: "",
-                element: <Home />
-            },
-            {
-                path:"ProductFilter",
-                element:<ProductFilter/>
- 
-             },
-             {
-                 path:"login",
-                 element:<Login/>
-             },
-             {
-                path:"about",
-                element:<About/>
-             },
-             {
-                 path:"sign-up",
-                 element:<Signup/>
-             },
-             {
-                path:"product/:id",
-                element:<ProductDetail/>
-             },
-             {
-             path:"cart",
-             element:<Cart/>
-             },
-             {
-               path:"search",
-               element:<SearchProduct/>
-             },
-             {
-                path: "admin-panel",
-                element: <AdminPanel />,
-                children: [
-                    {
-                        path: "all-users",
-                        element: <AllUser />
-                    },
-                    {
-                        path: "all-products",
-                        element: <AllProducts />
-                    }
-                ]
-             }
-        ]
-    }
-])
+//     }
+// ])
 
-export default router
+// export default router
