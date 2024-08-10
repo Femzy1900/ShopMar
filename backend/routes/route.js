@@ -2,61 +2,50 @@ const express = require('express')
 
 const router = express.Router()
 
-const userSignUpController = require("../controller/user/userSignUp")
-const userSignInController = require("../controller/user/userSignIn")
-const userDetailsController = require("../controller/user/userDetail");
-const authToken = require("../middleware/authToken");
-const userLogout = require("../controller/user/userLogout");
-const allUsers = require("../controller/user/allUser");
-const updateUser = require("../controller/user/updateUser");
-const UploadProductController = require("../controller/product/uploadProduct");
-const getProductController = require("../controller/product/getProduct");
-const updateProductController = require("../controller/product/updateProduct");
-const getCategoryProduct = require("../controller/product/getCategoryProductOne");
-const getCategoryWiseProduct = require("../controller/product/getCategoryWiseProduct");
-const getProductDetails = require("../controller/product/getProductDetails");
-const addToCartController = require("../controller/user/addToCartController");
-const countAddToCartProduct = require("../controller/user/countAddToCartProduct");
-const addToCartViewProduct = require("../controller/user/addToCartViewProduct");
-const updateAddToCartProduct = require("../controller/user/updateAddToCartProduct");
-const deleteAddToCartProduct = require("../controller/user/deleteAddToCartProduct");
-const searchProduct = require("../controller/product/searchProduct");
-const filterProductController = require("../controller/product/filterProduct");
-const paymentController = require("../controller/order/paymentController");
-const webhooks = require("../controller/order/webhook");
-const orderController = require("../controller/order/order.controller");
+
+const userSignUpController = require('../controller/user/userSignup')
+const userSignInController = require('../controller/user/userSignin')
+const userDetailsController = require("../controller/user/userDetail")
+const AuthToken = require('../middleware/AuthToken')
+const userLogout = require('../controller/user/userLogout')
+const AllUsersController =require('../controller/user/allUser')
+const updateUserController = require('../controller/user/UpdateUser')
+const uploadProduct = require('../controller/product/UploadProduct')
+const getProduct = require('../controller/product/getProduct')
+const UpdateProduct = require('../controller/product/UpdateProduct')
+const getProductCategory = require ('../controller/product/getProductCategory')
+const CategoryWiseProduct = require('../controller/product/getCategoryWiseProduct')
+const getproductDetails = require('../controller/product/getProductDetails')
+const addToCart = require('../controller/user/addToCart')
+const countAddToCart = require ('../controller/user/countcart')
+const veiwCartProduct = require('../controller/user/addToCartView')
+const updatecart = require("../controller/user/updateAddtoCartProduct") 
+const deletecart = require ("../controller/user/deleteCart")
+const SearchProduct = require('../controller/product/SearchProduct')
+const DeleteUser = require('../controller/user/DeleteUser')
+const DeleteProduct = require('../controller/product/DeleteProduct')
+
 
 router.post("/signup",userSignUpController)
 router.post("/signin",userSignInController)
-router.get("/user-details",authToken,userDetailsController)
+router.get("/user-details",AuthToken,userDetailsController)
 router.get("/userLogout",userLogout)
-
-//admin panel
-router.get("/all-user",authToken,allUsers)
-router.post("/update-user",authToken,updateUser)
-
-//product
-router.post("/upload-product",authToken,UploadProductController)
-router.get("/get-product",getProductController)
-router.post("/update-product",authToken,updateProductController)
-router.get("/get-categoryProduct",getCategoryProduct)
-router.post("/category-product",getCategoryWiseProduct)
-router.post("/product-details",getProductDetails)
-router.get("/search",searchProduct)
-router.post("/filter-product",filterProductController)
-
-//user add to cart
-router.post("/addtocart",authToken,addToCartController)
-router.get("/countAddToCartProduct",authToken,countAddToCartProduct)
-router.get("/view-card-product",authToken,addToCartViewProduct)
-router.post("/update-cart-product",authToken,updateAddToCartProduct)
-router.post("/delete-cart-product",authToken,deleteAddToCartProduct)
+router.get("/all-user",AuthToken,AllUsersController)
+router.put("/update-user",AuthToken,updateUserController)
+router.delete("/delete-user",AuthToken,DeleteUser)
+router.post("/upload-product",AuthToken,uploadProduct)
+router.get("/get-product",getProduct)
+router.put("/update-product",AuthToken,UpdateProduct)
+router.get("/ProductCategory",getProductCategory)
+router.post("/category-product",CategoryWiseProduct)
+router.get("/product-details",AuthToken,getproductDetails)
+router.post("/add-to-cart",AuthToken,addToCart)
+router.get("/countAddToCart",AuthToken,countAddToCart)
+router.get("/view-cart-product",AuthToken,veiwCartProduct)
+router.put("/update-cartProduct",AuthToken,updatecart)
+router.delete("/delete-cart",AuthToken,deletecart)
+router.get("/search",SearchProduct)
+router.delete("/delete-product",AuthToken,DeleteProduct)
 
 
-//payment and order
-router.post('/checkout',authToken,paymentController)
-router.post('/webhook',webhooks) // /api/webhook
-router.get("/order-list",authToken,orderController)
-
-
-module.exports = router
+module.exports=router
