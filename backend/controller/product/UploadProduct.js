@@ -8,7 +8,7 @@ async function uploadProduct(req, res) {
 
         if(!uploadProductPermission(sessionUserId)) {
             return res.status(403).json({
-                message: "User does  not have permission to upload product",
+                message: "User does not have permission to upload product",
                 error: true,
                 success: false
             })
