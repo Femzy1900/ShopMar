@@ -6,7 +6,7 @@ const getProduct = async(req, res) => {
         const allproduct = await productModel.find().sort({ createdAt : -1 })
 
         res.status(200).json({
-            message: "all product",
+            message: "All product",
             error: false,
             success: true,
             data: allproduct

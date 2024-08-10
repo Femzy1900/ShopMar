@@ -21,13 +21,13 @@ async function updateUser(req, res) {
             });
         }
 
-        if(role && user.role !== 'ADMIN') {
-            return res.status(403).json({
-                message: "You do not have permission to update the role",
-                error: true, 
-                success: false
-            })
-        }
+        // if(role && user.role !== 'ADMIN') {
+        //     return res.status(403).json({
+        //         message: "You do not have permission to update the role",
+        //         error: true, 
+        //         success: false
+        //     })
+        // }
 
         const updatedUser = await userModel.findByIdAndUpdate(userId, payload);
 

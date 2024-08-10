@@ -11,9 +11,9 @@ const getCategoryWiseProduct = async (req, res) => {
             success: true,
             data: products
         })
-    } catch (error) {
+    } catch (err) {
         res.status(400).json({
-            message: error.message || "Error retrieving products",
+            message: err.message || err,
             error: true,
             success: false
         })
