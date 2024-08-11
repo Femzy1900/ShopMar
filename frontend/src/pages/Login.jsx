@@ -31,10 +31,11 @@ const Login = () => {
 
     const dataResponse = await fetch(SummaryApi.signIn.url, {
       method: SummaryApi.signIn.method,
+      credentials: "include",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     });
 
     const dataApi = await dataResponse.json();
@@ -44,6 +45,7 @@ const Login = () => {
       navigate("/");
       fetchUserDetails();
       fetchUserAddToCart();
+
     }
 
     if (dataApi.error) {

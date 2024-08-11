@@ -13,7 +13,7 @@ async function userDetailsController(req, res) {
         })
     } catch (err) {
         res.status(400).json({
-            message: err.message || err,
+            message: "Error fetching user",
             error: true,
             success: false
         })
