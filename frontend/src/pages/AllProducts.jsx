@@ -20,6 +20,11 @@ const AllProducts = () => {
     }
 
 
+    useEffect(() => {
+        fetchAllProduct()
+    }, [])
+
+
     return (
         <div className="">
             <div className="bg-white py-2 px-4 flex justify-between items-center">
@@ -32,7 +37,10 @@ const AllProducts = () => {
             <div className="flex items-center flex-wrap gap-5 py-4 h-[calc(100vh-190px)] overflow-y-scroll">
                 {
                     allProduct.map((product, index) => {
-                        <AdminProductCard data={product} key={index+"allProduct"} fetchdata={fetchAllProduct}/>
+                        return (
+
+                            <AdminProductCard data={product} key={index+"allProduct"} fetchdata={fetchAllProduct}/>
+                        )
                     })
                 }
             </div>

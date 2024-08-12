@@ -67,7 +67,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className='flex items-center gap-7'>
-                    <div className='relative flex justify-center'>
+                    <div className='relative flex justify-center '>
                         {
                             user?._id && (
                                 <div className='text-3xl cursor-pointer' onClick={() => setMenuDisplay(prev => !prev)}>

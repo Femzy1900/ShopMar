@@ -85,7 +85,7 @@ function App() {
             <Route path="admin-panel/all-products" element={<AllProducts />} />
           </Routes>
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </Context.Provider>
     </BrowserRouter>
   );

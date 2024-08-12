@@ -4,7 +4,7 @@ const productModel = require("../../models/ProductModels");
 async function UpdateProduct(req, res) {
     try {
 
-        if(!uploadProductPermission(req.userid)) {
+        if(!uploadProductPermission(req.userId)) {
             return res.status(403).json({
                 message: "User does not have permission to uplaod product",
                 error: true,
