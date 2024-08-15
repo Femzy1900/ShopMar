@@ -33,7 +33,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
   };
 
   const handleProductUpload = async (e) => {
-    const file = e.target.file[0]
+    const file = e.target.file[0];
 
     const uploadImageCloudinary = await uploadImage(file)
     setData((preve) => {
