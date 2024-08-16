@@ -32,55 +32,56 @@ const UploadProduct = ({ onClose, fetchData }) => {
     });
   };
 
-  const handleProductUpload = async (e) => {
-    const file = e.target.file[0];
+  const handleProductUpload = async (event) => {
+    const file = event.target.files[0];
 
-    const uploadImageCloudinary = await uploadImage(file)
+    if (!file) return;
+
+    const uploadImageCloudinary = await uploadImage(file);
     setData((preve) => {
-        return {
-            ...preve,
-            productImage : [ ...preve.productImage, uploadImageCloudinary]
-        }
-    })
+      return {
+        ...preve,
+        productImage: [...preve.productImage, uploadImageCloudinary.url],
+      };
+    });
   };
 
   const handleDeleteProductImage = async (index) => {
-    console.log("image index", index)
+    console.log("image index", index);
 
-    const newProductImage = [...data.productImage]
-    newProductImage.splice(index, 1)
+    const newProductImage = [...data.productImage];
+    newProductImage.splice(index, 1);
 
     setData((preve) => {
-        return {
-            ...preve,
-            productImage : [...newProductImage]
-        }
-    })
+      return {
+        ...preve,
+        productImage: [...newProductImage],
+      };
+    });
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const response = await fetch(SummaryApi.uploadProduct.url,{
-        method : SummaryApi.uploadProduct.method,
-        credentials : 'include',
-        headers : {
-            "content-type" : "application/json"
-        },
-        body : JSON.stringify(data)
-    })
+    const response = await fetch(SummaryApi.uploadProduct.url, {
+      method: SummaryApi.uploadProduct.method,
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-    const responseData = await response.json()
+    const responseData = await response.json();
 
-    if(responseData.success){
-        toast.success(responseData?.message)
-        onClose()
-        fetchData()
+    if (responseData.success) {
+      toast.success(responseData?.message);
+      onClose();
+      fetchData();
     }
 
-
-    if(responseData.error){
-        toast.error(responseData?.message)
+    if (responseData.error) {
+      toast.error(responseData?.message);
     }
   };
 
@@ -251,9 +252,18 @@ const UploadProduct = ({ onClose, fetchData }) => {
             ></textarea>
           </div>
 
-          <button className='px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700'>Upload Product</button>
+          <button className="px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700">
+            Upload Product
+          </button>
         </form>
       </div>
+
+      {openFullScreenImage && (
+        <DisplayImage
+          onClose={() => setOpenFullScreenImage(false)}
+          imgUrl={fullScreenImage}
+        />
+      )}
     </div>
   );
 };

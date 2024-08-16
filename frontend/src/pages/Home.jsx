@@ -3,6 +3,8 @@ import CategoryList from "../component/CategoryList";
 import HorizontalCardProduct from "../component/HorizontalCardProduct";
 import VerticalCardProduct from "../component/VerticalCardProduct";
 
+
+
 const Home = () => {
     return (
         <div className="">

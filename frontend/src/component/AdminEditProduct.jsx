@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import productCategory from "../helpers/productCategory";
 import { CgClose } from "react-icons/cg";
 import { FaCloudUploadAlt } from "react-icons/fa";
-import DisplayImage from "./DisplayImage";
 import { MdDelete } from "react-icons/md";
 import SummaryApi from "../common";
 import { toast } from "react-toastify";
 import uploadImage from "../helpers/uploadImage";
+import DisplayImage from "./DisplayImage";
 
 const UploadProduct = ({ onClose, fetchdata, productData }) => {
   const [data, setData] = useState({
@@ -33,16 +33,16 @@ const UploadProduct = ({ onClose, fetchdata, productData }) => {
     });
   };
 
-  const handleProductUpload = async (e) => {
-    const file = e.target.file[0]
+  const handleUploadProduct = async (event) => {
+    const file = event.target.files[0];
 
-    const uploadImageCloudinary = await uploadImage(file)
+    const uploadImageCloudinary = await uploadImage(file);
     setData((preve) => {
-        return {
-            ...preve,
-            productImage : [ ...preve.productImage, uploadImageCloudinary]
-        }
-    })
+      return {
+        ...preve,
+        productImage: [...preve.productImage, uploadImageCloudinary.url],
+      };
+    });
   };
 
   const handleDeleteProductImage = async (index) => {
@@ -159,22 +159,15 @@ const UploadProduct = ({ onClose, fetchdata, productData }) => {
             <label htmlFor="productImage" className="mt-3">
               Product Image :
             </label>
-            <label htmlFor="uploadImageInput">
-              <div className="p-2 bg-slate-100 border rounded h-32 w-full flex justify-center items-center cursor-pointer">
-                <div className="text-slate-500 flex justify-center items-center flex-col gap-2">
-                  <span className="text-4xl">
-                    <FaCloudUploadAlt />
-                  </span>
-                  <p className="text-sm">Upload Product Image</p>
-                  <input
-                    type="file"
-                    id="uploadImageInput"
-                    className="hidden"
-                    onChange={handleProductUpload}
-                  />
-                </div>
-              </div>
-            </label>
+            <label htmlFor='uploadImageInput'>
+                        <div className='p-2 bg-slate-100 border rounded h-32 w-full flex justify-center items-center cursor-pointer'>
+                            <div className='text-slate-500 flex justify-center items-center flex-col gap-2'>
+                                <span className='text-4xl'><FaCloudUploadAlt/></span>
+                                <p className='text-sm'>Upload Product Image</p>
+                                <input type='file' id='uploadImageInput'  className='hidden' onChange={handleUploadProduct}/>
+                            </div>
+                        </div>
+                    </label>
           </div>
 
           <div>
@@ -182,7 +175,7 @@ const UploadProduct = ({ onClose, fetchdata, productData }) => {
               <div className="flex items-center gap-2">
                 {data.productImage.map((el, index) => {
                   return (
-                    <div className="relative group">
+                    <div key={index} className="relative group">
                       <img
                         src={el}
                         alt={el}
@@ -255,6 +248,14 @@ const UploadProduct = ({ onClose, fetchdata, productData }) => {
           <button className='px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700'>Upload Product</button>
         </form>
       </div>
+
+       {/***display image full screen */}
+       {
+                openFullScreenImage && (
+                    <DisplayImage onClose={()=>setOpenFullScreenImage(false)} imgUrl={fullScreenImage}/>
+                )
+            }
+
     </div>
   );
 };
