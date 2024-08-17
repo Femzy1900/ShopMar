@@ -40,7 +40,7 @@ const CategoryProduct = () => {
     const handleSelectCategory = (e) => {
         const {name, value, checked} = e.target
 
-        selectCategory((preve) => {
+        setSelectCategory((preve) => {
             return {
                 ...preve,
                 [value]: checked
