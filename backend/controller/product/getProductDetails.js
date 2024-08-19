@@ -3,12 +3,9 @@ const productModel = require("../../models/ProductModels")
 const getProductDetail = async (req, res) => {
     try {
 
-        const { productId} = req.query;
-        const userId = req.userId
+        const { productId } = req.body
 
-        console.log('Received request with productId:', productId, 'and userId:', userId);
-
-        const product = await productModel.findById(productId).lean();
+        const product = await productModel.findById(productId)
 
         if (!product) {
             console.error('Product not found for productId:', productId)
