@@ -28,7 +28,7 @@ const HorizontalCardProduct = ({category, heading}) => {
         setLoading(false)
 
         console.log("horizontal data",categoryProduct.data)
-        setData(categoryProduct.data || [])
+        setData(categoryProduct?.data)
     }
 
     useEffect(()=>{
