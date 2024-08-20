@@ -22,9 +22,10 @@ const updateAddToCartProduct = require("../controller/user/updateAddToCartProduc
 const deleteAddToCartProduct = require("../controller/user/deleteAddToCartProduct");
 const searchProduct = require("../controller/product/searchProduct");
 const filterProductController = require("../controller/product/FilterProduct");
-// const paymentController = require("../controller/order/paymentController");
-// const webhooks = require("../controller/order/webhook");
-// const orderController = require("../controller/order/order.controller");
+const paymentController = require('../controller/order/paymentController')
+const webhook = require('../controller/order/webhook.js')
+const orderController = require('../controller/order/orderController')
+const allOrderController = require('../controller/order/allOrderController')
 
 router.post("/signup",userSignUpController)
 router.post("/signin",userSignInController)
@@ -51,11 +52,11 @@ router.get("/view-card-product",authToken,addToCartViewProduct)
 router.post("/update-cart-product",authToken,updateAddToCartProduct)
 router.post("/delete-cart-product",authToken,deleteAddToCartProduct)
 
-
-// //payment and order
-// router.post('/checkout',authToken,paymentController)
-// router.post('/webhook',webhooks) // /api/webhook
-// router.get("/order-list",authToken,orderController)
+//payment and order
+router.post('/checkout',authToken,paymentController)
+router.post('/webhook',webhook) // /api/webhook
+router.get('/order-list',authToken,orderController)
+router.get('/all-order',authToken,allOrderController)
 
 
 module.exports = router
