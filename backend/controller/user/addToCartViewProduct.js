@@ -1,26 +1,26 @@
-const AddToCartModel = require("../../models/CartProduct")
+const addToCartModel = require("../../models/cartProduct")
 
-const addToCartView = async (req, res) => {
-    try {
+const addToCartViewProduct = async(req,res)=>{
+    try{
         const currentUser = req.userId
-        const allproduct = await AddToCartModel.find({
-            userId: currentUser
+
+        const allProduct = await addToCartModel.find({
+            userId : currentUser
         }).populate("productId")
 
         res.json({
-            data: allproduct,
-            success: true,
-            error: false
+            data : allProduct,
+            success : true,
+            error : false
         })
 
-    } catch(error) {
+    }catch(err){
         res.json({
-            message: error?.message || err,
-            error: true, 
-            success: false
+            message : err.message || err,
+            error : true,
+            success : false
         })
-
     }
 }
 
-module.exports = addToCartView
+module.exports =  addToCartViewProduct

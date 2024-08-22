@@ -1,16 +1,17 @@
 const mongoose = require('mongoose')
 
-const AddToCart = mongoose.Schema({
+const addToCart = mongoose.Schema({
     productId : {
         ref : 'product',
-        type: String,
+        type : String,
     },
-    quantity: Number,
-    userId: String,
-}, {
-    timestamps: true
+    quantity : Number,
+    userId : String,
+},{
+    timestamps : true
 })
 
-const AddToCartModel = mongoose.model("Cart", AddToCart)
 
-module.exports = AddToCartModel
+const addToCartModel = mongoose.model("addToCart",addToCart)
+
+module.exports = addToCartModel
