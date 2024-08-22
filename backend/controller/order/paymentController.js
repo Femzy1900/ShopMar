@@ -3,8 +3,8 @@ const userModel = require('../../models/userModel')
 
 const paymentController = async(req,res)=>{
     try{
-        const { cartItems } = request.body                                                                                                                                                                     
-        const user = await userModel.findOne({ _id : request.userId})
+        const { cartItems } = req.body                                                                                                                                                                     
+        const user = await userModel.findOne({ _id : req.userId})
 
         const params = {
             submit_type : 'pay',
@@ -18,7 +18,7 @@ const paymentController = async(req,res)=>{
             ] ,
             customer_email : user.email,
             metadata : {
-                userId :  request.userId
+                userId :  req.userId
             },
             line_items : cartItems.map((item,index)=>{
                 return{
@@ -46,10 +46,10 @@ const paymentController = async(req,res)=>{
 
         const session = await stripe.checkout.sessions.create(params)
 
-        response.status(303).json(session)
+        res.status(303).json(session)
 
     }catch(error){
-        response.json({
+        res.json({
             message : error?.message || error,
             error : true,
             success : false
