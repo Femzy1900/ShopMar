@@ -17,11 +17,11 @@ const AllUser = () => {
 
     const fetchAllUsers = async() => {
         const fetchData = await fetch(SummaryApi.allUser.url, {
-            method: SummaryApi.allUser.url,
+            method: SummaryApi.allUser.method,
             credentials: "include"
         })
 
-        const dataResponse = await fetchData.json
+        const dataResponse = await fetchData.json()
         
         if(dataResponse.success) {
             setAllUser(dataResponse.data)
@@ -34,7 +34,7 @@ const AllUser = () => {
 
     useEffect(() => {
         fetchAllUsers()
-    })
+    }, [])
 
     return (
         <div className="bg-white pb-4">
@@ -54,7 +54,7 @@ const AllUser = () => {
                     {
                         allUser.map((el, index) => {
                             return (
-                                <tr>
+                                <tr key={el.index}>
                                     <td>{index+1}</td>
                                     <td>{el?.name}</td>
                                     <td>{el?.email}</td>

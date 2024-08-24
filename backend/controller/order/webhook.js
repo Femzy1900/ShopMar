@@ -1,5 +1,5 @@
 const addToCartModel = require("../../models/cartProduct")
-const orderModel = require("../../models/orderProductModel")
+const orderModel = require('../../models/orderProductModel')
 const stripe = require("../../config/stripe")
 
 const endpointSecret = process.env.STRIPE_ENDPOINT_WEBHOOK_SECRET_KEY
