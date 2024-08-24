@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import LoginIcon from "../assest/signin.gif";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -51,6 +51,8 @@ const Login = () => {
     if (dataApi.error) {
       toast.error(dataApi.message);
     }
+
+
   };
   return (
     <section id="login">

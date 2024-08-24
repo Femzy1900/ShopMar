@@ -13,8 +13,6 @@ const Cart = () => {
     const context = useContext(Context);
     const loadingCart = new Array(4).fill(null);
 
-    console.log("Stripe API Key:", apiKey); // This should print your API key
-
     const fetchData = async () => {
         const response = await fetch(SummaryApi.addToCartProductView.url, {
             method: SummaryApi.addToCartProductView.method,
